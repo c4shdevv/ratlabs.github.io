@@ -3,72 +3,672 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>luaudecompil3r | Portfolio</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
+    <title>NebulaCore | Apple-Inspired Tech</title>
     <style>
+        :root {
+            --discord-blurple: #5865F2;
+            --discord-green: #57F287;
+            --discord-yellow: #FEE75C;
+            --discord-red: #ED4245;
+            --discord-dark: #1e1f22;
+            --discord-darker: #161618;
+            --discord-text: #dbdee1;
+            --neon-glow: 0 0 10px rgba(88, 101, 242, 0.8);
+        }
+        
         body {
-            background: #1e1e1e;
-            color: white;
-            font-family: Arial, sans-serif;
-            text-align: center;
+            background-color: var(--discord-darker);
+            color: var(--discord-text);
+            font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
             overflow-x: hidden;
         }
-        .fade-in {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.8s ease, transform 0.8s ease;
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
         }
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
+        
+        header {
+            background-color: rgba(30, 31, 34, 0.8);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(88, 101, 242, 0.2);
         }
-        .button {
-            background-color: #5a00ff;
-            padding: 10px 20px;
-            border-radius: 20px;
-            color: white;
-            font-weight: bold;
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            background: linear-gradient(90deg, var(--discord-blurple), var(--discord-green));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-decoration: none;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+        
+        .nav-links a {
+            color: var(--discord-text);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .nav-links a:hover {
+            color: var(--discord-blurple);
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--discord-blurple);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .hero {
+            padding: 180px 0 100px;
+            text-align: center;
+            background: radial-gradient(circle at center, rgba(88, 101, 242, 0.1) 0%, transparent 70%);
+        }
+        
+        h1 {
+            font-size: 72px;
+            font-weight: 800;
+            margin-bottom: 20px;
+            background: linear-gradient(90deg, var(--discord-blurple), var(--discord-green));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: var(--neon-glow);
+        }
+        
+        .subtitle {
+            font-size: 24px;
+            max-width: 700px;
+            margin: 0 auto 40px;
+            color: rgba(219, 222, 225, 0.8);
+        }
+        
+        .btn {
             display: inline-block;
-            margin-top: 20px;
-            transition: 0.3s;
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            margin: 0 10px;
         }
-        .button:hover {
-            background-color: #3a00cc;
+        
+        .btn-primary {
+            background-color: var(--discord-blurple);
+            color: white;
+            box-shadow: var(--neon-glow);
         }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 20px rgba(88, 101, 242, 0.6);
+        }
+        
+        .btn-secondary {
+            border: 2px solid var(--discord-blurple);
+            color: var(--discord-blurple);
+        }
+        
+        .btn-secondary:hover {
+            background-color: rgba(88, 101, 242, 0.1);
+        }
+        
+        .products {
+            padding: 100px 0;
+            background-color: var(--discord-dark);
+            border-top: 1px solid rgba(88, 101, 242, 0.1);
+            border-bottom: 1px solid rgba(88, 101, 242, 0.1);
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 40px;
+            margin-bottom: 60px;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--discord-blurple), var(--discord-green));
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+        
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        
+        .product-card {
+            background-color: var(--discord-darker);
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid rgba(88, 101, 242, 0.2);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(88, 101, 242, 0.2);
+            border-color: var(--discord-blurple);
+        }
+        
+        .product-image {
+            height: 200px;
+            background-color: #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .product-image img {
+            max-width: 80%;
+            max-height: 80%;
+            object-fit: contain;
+            filter: drop-shadow(0 0 10px rgba(88, 101, 242, 0.5));
+            transition: all 0.5s ease;
+        }
+        
+        .product-card:hover .product-image img {
+            transform: scale(1.05);
+            filter: drop-shadow(0 0 15px rgba(88, 101, 242, 0.8));
+        }
+        
+        .product-info {
+            padding: 20px;
+        }
+        
+        .product-name {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        
+        .product-desc {
+            color: rgba(219, 222, 225, 0.7);
+            margin-bottom: 20px;
+            font-size: 15px;
+        }
+        
+        .product-price {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--discord-green);
+        }
+        
+        .features {
+            padding: 100px 0;
+            background-color: var(--discord-darker);
+        }
+        
+        .feature-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+        
+        .feature-item {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--discord-blurple), var(--discord-green));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        
+        .feature-icon i {
+            font-size: 24px;
+            color: white;
+        }
+        
+        .feature-text h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+        
+        .feature-text p {
+            color: rgba(219, 222, 225, 0.7);
+        }
+        
         footer {
-            margin-top: 50px;
+            background-color: var(--discord-dark);
+            padding: 60px 0 30px;
+            border-top: 1px solid rgba(88, 101, 242, 0.1);
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: var(--discord-text);
+        }
+        
+        .footer-column ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column ul li a {
+            color: rgba(219, 222, 225, 0.7);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-column ul li a:hover {
+            color: var(--discord-blurple);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(88, 101, 242, 0.1);
+            color: rgba(219, 222, 225, 0.5);
             font-size: 14px;
-            color: #aaa;
+        }
+        
+        /* Hacker elements */
+        .matrix-effect {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.03;
+            pointer-events: none;
+        }
+        
+        .glow-line {
+            position: absolute;
+            height: 1px;
+            width: 100%;
+            background: linear-gradient(90deg, transparent, var(--discord-blurple), transparent);
+            box-shadow: 0 0 10px var(--discord-blurple);
+            opacity: 0.1;
+        }
+        
+        @keyframes pulse {
+            0% { opacity: 0.1; }
+            50% { opacity: 0.3; }
+            100% { opacity: 0.1; }
+        }
+        
+        .pulse {
+            animation: pulse 4s infinite ease-in-out;
+        }
+        
+        .terminal-box {
+            background-color: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(88, 101, 242, 0.3);
+            border-radius: 8px;
+            padding: 20px;
+            font-family: 'Courier New', monospace;
+            margin: 40px auto;
+            max-width: 800px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .terminal-header {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 15px;
+        }
+        
+        .terminal-btn {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+        
+        .terminal-btn.red {
+            background-color: var(--discord-red);
+        }
+        
+        .terminal-btn.yellow {
+            background-color: var(--discord-yellow);
+        }
+        
+        .terminal-btn.green {
+            background-color: var(--discord-green);
+        }
+        
+        .terminal-content {
+            color: var(--discord-green);
+        }
+        
+        .terminal-content .command {
+            color: var(--discord-blurple);
+        }
+        
+        .cursor {
+            display: inline-block;
+            width: 8px;
+            height: 16px;
+            background-color: var(--discord-green);
+            vertical-align: middle;
+            animation: blink 1s infinite;
+        }
+        
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
         }
     </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-    <div class="container mx-auto py-20">
-        <h1 class="text-5xl font-bold fade-in">luaudecompil3r</h1>
-        <p class="text-lg mt-3 fade-in">A passionate LuaU developer since 2020.</p>
-
-        <h2 class="text-3xl font-bold mt-16 fade-in">Current Projects</h2>
-        <p class="text-xl mt-4 fade-in">Rat Labs Hub</p>
-        <a href="https://discord.gg/nahS6hnHrG" class="button fade-in">Get Rat Labs Hub</a>
-    </div>
+    <canvas id="matrix" class="matrix-effect"></canvas>
+    <div class="glow-line pulse" style="top: 30%;"></div>
+    <div class="glow-line pulse" style="top: 60%;"></div>
     
-    <div class="mt-16 fade-in">
-        <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/5E7p95xh9Ul4vZp4LEoJwi?utm_source=generator&theme=0" width="300" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-    </div>
-
-    <footer class="fade-in">Made with love by luaudecompil3r</footer>
-
+    <header>
+        <div class="container">
+            <nav>
+                <a href="#" class="logo">NebulaCore</a>
+                <div class="nav-links">
+                    <a href="#">Products</a>
+                    <a href="#">Features</a>
+                    <a href="#">Support</a>
+                    <a href="#">About</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+    
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h1>Think Different.</h1>
+                <p class="subtitle">Experience the future of technology with NebulaCore's revolutionary products, designed for those who dare to push boundaries.</p>
+                <a href="#" class="btn btn-primary">Explore</a>
+                <a href="#" class="btn btn-secondary">Learn more <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </section>
+        
+        <section class="products">
+            <div class="container">
+                <h2 class="section-title">Our Collection</h2>
+                <div class="product-grid">
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="https://placeholder.com/device-mockup" alt="Quantum X">
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-name">Quantum X</h3>
+                            <p class="product-desc">The most powerful device we've ever created. With neural engine and quantum computing capabilities.</p>
+                            <div class="product-price">From $1,999</div>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="https://placeholder.com/device-mockup" alt="Nebula Vision Pro">
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-name">Nebula Vision Pro</h3>
+                            <p class="product-desc">Spatial computing reimagined. Dive into worlds beyond imagination with our mixed reality headset.</p>
+                            <div class="product-price">From $3,499</div>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="https://placeholder.com/device-mockup" alt="CorePhone 15">
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-name">CorePhone 15</h3>
+                            <p class="product-desc">The ultimate smartphone experience with holographic display and AI assistant.</p>
+                            <div class="product-price">From $1,099</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="terminal-box">
+            <div class="terminal-header">
+                <div class="terminal-btn red"></div>
+                <div class="terminal-btn yellow"></div>
+                <div class="terminal-btn green"></div>
+            </div>
+            <div class="terminal-content">
+                <p>> Welcome to NebulaCore Terminal</p>
+                <p>> Initializing system diagnostics...</p>
+                <p>> <span class="command">sudo run security_check --full</span></p>
+                <p>> System integrity: 100%</p>
+                <p>> Quantum encryption: Active</p>
+                <p>> Neural network: Online</p>
+                <p>> Ready for input<span class="cursor"></span></p>
+            </div>
+        </section>
+        
+        <section class="features">
+            <div class="container">
+                <h2 class="section-title">Why NebulaCore</h2>
+                <div class="feature-list">
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <div class="feature-text">
+                            <h3>Quantum Performance</h3>
+                            <p>Harness the power of quantum computing with our proprietary neural architecture.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <div class="feature-text">
+                            <h3>Military-Grade Security</h3>
+                            <p>End-to-end encryption and biometric authentication keep your data secure.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-infinity"></i>
+                        </div>
+                        <div class="feature-text">
+                            <h3>Seamless Ecosystem</h3>
+                            <p>All NebulaCore devices work together in perfect harmony.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <div class="feature-text">
+                            <h3>AI Assistant</h3>
+                            <p>Our neural AI learns and adapts to your needs before you even ask.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-eye"></i>
+                        </div>
+                        <div class="feature-text">
+                            <h3>Holographic Display</h3>
+                            <p>Experience true 3D visuals without the need for special glasses.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-leaf"></i>
+                        </div>
+                        <div class="feature-text">
+                            <h3>Sustainable Tech</h3>
+                            <p>100% recycled materials and carbon-neutral manufacturing.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h3>Shop and Learn</h3>
+                    <ul>
+                        <li><a href="#">Store</a></li>
+                        <li><a href="#">Quantum X</a></li>
+                        <li><a href="#">CorePhone</a></li>
+                        <li><a href="#">Nebula Vision</a></li>
+                        <li><a href="#">Accessories</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Services</h3>
+                    <ul>
+                        <li><a href="#">NebulaCloud</a></li>
+                        <li><a href="#">NebulaTV+</a></li>
+                        <li><a href="#">NebulaArcade</a></li>
+                        <li><a href="#">iStorage</a></li>
+                        <li><a href="#">NebulaPay</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>For Business</h3>
+                    <ul>
+                        <li><a href="#">Nebula for Business</a></li>
+                        <li><a href="#">Shop for Business</a></li>
+                        <li><a href="#">Enterprise Solutions</a></li>
+                        <li><a href="#">Education</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>About NebulaCore</h3>
+                    <ul>
+                        <li><a href="#">Newsroom</a></li>
+                        <li><a href="#">Leadership</a></li>
+                        <li><a href="#">Career Opportunities</a></li>
+                        <li><a href="#">Investors</a></li>
+                        <li><a href="#">Ethics & Compliance</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>Copyright © 2023 NebulaCore Inc. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
     <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            const elements = document.querySelectorAll(".fade-in");
-            const observer = new IntersectionObserver(entries => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add("visible");
-                    }
-                });
-            });
-            elements.forEach(el => observer.observe(el));
+        // Matrix effect
+        const canvas = document.getElementById('matrix');
+        const ctx = canvas.getContext('2d');
+        
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        
+        const katakana = 'アァカサタナハマヤャラワガザダバパイィキシチニヒミリヰギジヂビピウゥクスツヌフムユュルグズブヅプエェケセテネヘメレヱゲゼデベペオォコソトノホモヨョロヲゴゾドボポヴッン';
+        const latin = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        const nums = '0123456789';
+        
+        const alphabet = katakana + latin + nums;
+        
+        const fontSize = 16;
+        const columns = canvas.width / fontSize;
+        
+        const rainDrops = [];
+        
+        for (let x = 0; x < columns; x++) {
+            rainDrops[x] = 1;
+        }
+        
+        const draw = () => {
+            ctx.fillStyle = 'rgba(30, 31, 34, 0.05)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            ctx.fillStyle = '#57F287';
+            ctx.font = fontSize + 'px monospace';
+            
+            for (let i = 0; i < rainDrops.length; i++) {
+                const text = alphabet.charAt(Math.floor(Math.random() * alphabet.length));
+                ctx.fillText(text, i * fontSize, rainDrops[i] * fontSize);
+                
+                if (rainDrops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                    rainDrops[i] = 0;
+                }
+                rainDrops[i]++;
+            }
+        };
+        
+        setInterval(draw, 30);
+        
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
         });
     </script>
 </body>
